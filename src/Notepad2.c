@@ -3384,8 +3384,10 @@ LRESULT MsgCommand(HWND hwnd,WPARAM wParam,LPARAM lParam)
         case SCLEX_DIFF:
         case SCLEX_MARKDOWN:
           break;
-        case SCLEX_HTML:
         case SCLEX_XML:
+          EditEncloseSelection(hwndEdit, L"<!--", L"-->");
+          break;
+        case SCLEX_HTML:        
         case SCLEX_CPP:
         case SCLEX_PASCAL:
           BeginWaitCursor();
@@ -3470,8 +3472,10 @@ LRESULT MsgCommand(HWND hwnd,WPARAM wParam,LPARAM lParam)
         case SCLEX_MARKDOWN:
         case SCLEX_YAML:
           break;
-        case SCLEX_HTML:
         case SCLEX_XML:
+          EditEncloseSelection(hwndEdit, L"<!--", L"-->");
+          break;
+        case SCLEX_HTML:        
         case SCLEX_CSS:
         case SCLEX_CPP:
         case SCLEX_NSIS:
