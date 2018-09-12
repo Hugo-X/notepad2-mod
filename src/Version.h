@@ -56,13 +56,12 @@
 #endif
 
 // Compiler specific
+// https://en.wikipedia.org/wiki/Microsoft_Visual_C++
 #if defined(_MSC_VER)
-    #if _MSC_VER == 1910
-        #if (_MSC_FULL_VER >= 191025017 && _MSC_FULL_VER <= 191025019)
-            #define VERSION_COMPILER    L"MSVC 2017"
-        #endif
+    #if _MSC_VER >= 1910
+		#define VERSION_COMPILER    L"MSVC " STRINGIFY(_MSC_VER) L" (VS 2017)"
     #else
-        #define VERSION_COMPILER        L"MSVC (version unknown)"
+        #define VERSION_COMPILER    L"MSVC " STRINGIFY(_MSC_VER)
     #endif
 #else
     #define VERSION_COMPILER            L"(Unknown compiler)"
