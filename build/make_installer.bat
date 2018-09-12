@@ -8,7 +8,7 @@ rem *   Batch file for building the installer for Notepad2-mod
 rem *
 rem * See License.txt for details about distribution and modification.
 rem *
-rem *                                     (c) XhmikosR 2010-2015
+rem *                                     (c) XhmikosR 2010-2017
 rem *                                     https://github.com/XhmikosR/notepad2-mod
 rem *
 rem ******************************************************************************
@@ -34,28 +34,12 @@ CALL :SubDetectInnoSetup
 
 rem Check for the first switch
 IF "%~1" == "" (
-  SET "COMPILER=VS2015"
+  SET "COMPILER=VS2017"
 ) ELSE (
-  IF /I "%~1" == "VS2010"   SET "COMPILER=VS2010" & GOTO START
-  IF /I "%~1" == "/VS2010"  SET "COMPILER=VS2010" & GOTO START
-  IF /I "%~1" == "-VS2010"  SET "COMPILER=VS2010" & GOTO START
-  IF /I "%~1" == "--VS2010" SET "COMPILER=VS2010" & GOTO START
-  IF /I "%~1" == "VS2012"   SET "COMPILER=VS2012" & GOTO START
-  IF /I "%~1" == "/VS2012"  SET "COMPILER=VS2012" & GOTO START
-  IF /I "%~1" == "-VS2012"  SET "COMPILER=VS2012" & GOTO START
-  IF /I "%~1" == "--VS2012" SET "COMPILER=VS2012" & GOTO START
-  IF /I "%~1" == "VS2013"   SET "COMPILER=VS2013" & GOTO START
-  IF /I "%~1" == "/VS2013"  SET "COMPILER=VS2013" & GOTO START
-  IF /I "%~1" == "-VS2013"  SET "COMPILER=VS2013" & GOTO START
-  IF /I "%~1" == "--VS2013" SET "COMPILER=VS2013" & GOTO START
-  IF /I "%~1" == "VS2015"   SET "COMPILER=VS2015" & GOTO START
-  IF /I "%~1" == "/VS2015"  SET "COMPILER=VS2015" & GOTO START
-  IF /I "%~1" == "-VS2015"  SET "COMPILER=VS2015" & GOTO START
-  IF /I "%~1" == "--VS2015" SET "COMPILER=VS2015" & GOTO START
-  IF /I "%~1" == "WDK"      SET "COMPILER=WDK"    & GOTO START
-  IF /I "%~1" == "/WDK"     SET "COMPILER=WDK"    & GOTO START
-  IF /I "%~1" == "-WDK"     SET "COMPILER=WDK"    & GOTO START
-  IF /I "%~1" == "--WDK"    SET "COMPILER=WDK"    & GOTO START
+  IF /I "%~1" == "VS2017"   SET "COMPILER=VS2017" & GOTO START
+  IF /I "%~1" == "/VS2017"  SET "COMPILER=VS2017" & GOTO START
+  IF /I "%~1" == "-VS2017"  SET "COMPILER=VS2017" & GOTO START
+  IF /I "%~1" == "--VS2017" SET "COMPILER=VS2017" & GOTO START
 
   ECHO.
   ECHO Unsupported commandline switch!
@@ -65,11 +49,11 @@ IF "%~1" == "" (
 
 
 :START
-IF EXIST "%~dp0..\signinfo_notepad2-mod.txt" SET "SIGN=True"
+IF EXIST "%~dp0..\signinfo.txt" SET "SIGN=True"
 
 SET INPUTDIRx86=bin\%COMPILER%\Release_x86
 SET INPUTDIRx64=bin\%COMPILER%\Release_x64
-IF /I NOT "%COMPILER%" == "VS2015" SET SUFFIX=_%COMPILER%
+IF /I NOT "%COMPILER%" == "VS2017" SET SUFFIX=_%COMPILER%
 SET "TEMP_NAME=temp_zip%SUFFIX%"
 
 IF NOT EXIST "..\%INPUTDIRx86%\Notepad2.exe" CALL :SUBMSG "ERROR" "Compile Notepad2 x86 first!"
@@ -141,7 +125,7 @@ EXIT /B
 :SHOWHELP
 TITLE %~nx0 %1
 ECHO. & ECHO.
-ECHO Usage:  %~nx0 [VS2010^|VS2012^|VS2013^|VS2015^|WDK]
+ECHO Usage:  %~nx0 [VS2017]
 ECHO.
 ECHO Notes:  You can also prefix the commands with "-", "--" or "/".
 ECHO         The arguments are not case sensitive.
@@ -150,7 +134,7 @@ ECHO         You can use another Inno Setup location by defining %%InnoSetupPath
 ECHO         This is usefull if you have the Unicode build installed
 ECHO         and you want to use the ANSI one.
 ECHO. & ECHO.
-ECHO Executing %~nx0 without any arguments is equivalent to "%~nx0 WDK"
+ECHO Executing %~nx0 without any arguments is equivalent to "%~nx0 VS2017"
 ECHO.
 ENDLOCAL
 EXIT /B

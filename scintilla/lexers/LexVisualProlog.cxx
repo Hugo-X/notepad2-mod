@@ -76,30 +76,30 @@ public:
     }
     virtual ~LexerVisualProlog() {
     }
-    void SCI_METHOD Release() {
+    void SCI_METHOD Release() override {
         delete this;
     }
-    int SCI_METHOD Version() const {
+    int SCI_METHOD Version() const override {
         return lvOriginal;
     }
-    const char * SCI_METHOD PropertyNames() {
+    const char * SCI_METHOD PropertyNames() override {
         return osVisualProlog.PropertyNames();
     }
-    int SCI_METHOD PropertyType(const char *name) {
+    int SCI_METHOD PropertyType(const char *name) override {
         return osVisualProlog.PropertyType(name);
     }
-    const char * SCI_METHOD DescribeProperty(const char *name) {
+    const char * SCI_METHOD DescribeProperty(const char *name) override {
         return osVisualProlog.DescribeProperty(name);
     }
-    Sci_Position SCI_METHOD PropertySet(const char *key, const char *val);
-    const char * SCI_METHOD DescribeWordListSets() {
+    Sci_Position SCI_METHOD PropertySet(const char *key, const char *val) override;
+    const char * SCI_METHOD DescribeWordListSets() override {
         return osVisualProlog.DescribeWordListSets();
     }
-    Sci_Position SCI_METHOD WordListSet(int n, const char *wl);
-    void SCI_METHOD Lex(Sci_PositionU startPos, Sci_Position length, int initStyle, IDocument *pAccess);
-    void SCI_METHOD Fold(Sci_PositionU startPos, Sci_Position length, int initStyle, IDocument *pAccess);
+    Sci_Position SCI_METHOD WordListSet(int n, const char *wl) override;
+    void SCI_METHOD Lex(Sci_PositionU startPos, Sci_Position length, int initStyle, IDocument *pAccess) override;
+    void SCI_METHOD Fold(Sci_PositionU startPos, Sci_Position length, int initStyle, IDocument *pAccess) override;
 
-    void * SCI_METHOD PrivateCall(int, void *) {
+    void * SCI_METHOD PrivateCall(int, void *) override {
         return 0;
     }
 
@@ -162,6 +162,11 @@ static bool isAlphaNum(int ch){
     return (ccLu == cc || ccLl == cc || ccLt == cc || ccLm == cc || ccLo == cc || ccNd == cc || ccNl == cc || ccNo == cc);
 }
 
+static bool isStringVerbatimOpenClose(int ch){
+    CharacterCategory cc = CategoriseCharacter(ch);
+    return (ccPc <= cc && cc <= ccSo);
+}
+
 static bool isIdChar(int ch){
     return ('_') == ch || isAlphaNum(ch);
 }
@@ -198,11 +203,11 @@ static bool isOpenStringVerbatim(int next, int &closingQuote){
     case L';':
         return false;
     default:
-        if (isAlphaNum(next)) {
-            return false;
-        } else {
+        if (isStringVerbatimOpenClose(next)) {
             closingQuote = next;
             return true;
+        } else {
+			return false;
         }
     }
 }
@@ -247,7 +252,7 @@ static void forwardEscapeLiteral(StyleContext &sc, int EscapeState) {
 void SCI_METHOD LexerVisualProlog::Lex(Sci_PositionU startPos, Sci_Position length, int initStyle, IDocument *pAccess) {
     LexAccessor styler(pAccess);
     CharacterSet setDoxygen(CharacterSet::setAlpha, "");
-    CharacterSet setNumber(CharacterSet::setNone, "+-.0123456789abcdefABCDEFxoXO");
+    CharacterSet setNumber(CharacterSet::setNone, "0123456789abcdefABCDEFxoXO");
 
     StyleContext sc(startPos, length, initStyle, styler, 0x7f);
 
@@ -273,7 +278,7 @@ void SCI_METHOD LexerVisualProlog::Lex(Sci_PositionU startPos, Sci_Position leng
             break;
         case SCE_VISUALPROLOG_NUMBER:
             // We accept almost anything because of hex. and number suffixes
-            if (!(setNumber.Contains(sc.ch))) {
+            if (!(setNumber.Contains(sc.ch)) || (sc.Match('.') && IsADigit(sc.chNext))) {
                 sc.SetState(SCE_VISUALPROLOG_DEFAULT);
             }
             break;
@@ -396,7 +401,7 @@ void SCI_METHOD LexerVisualProlog::Lex(Sci_PositionU startPos, Sci_Position leng
         if (sc.atLineEnd) {
             // Update the line state, so it can be seen by next line
             int lineState = 0;
-            if (SCE_VISUALPROLOG_STRING_VERBATIM_EOL == sc.state) { 
+            if (SCE_VISUALPROLOG_STRING_VERBATIM_EOL == sc.state) {
                 lineState = closingQuote;
             } else if (SCE_VISUALPROLOG_COMMENT_BLOCK == sc.state) {
                 lineState = nestLevel;

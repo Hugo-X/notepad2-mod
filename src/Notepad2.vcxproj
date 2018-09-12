@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{BAAD32AB-CD47-12FD-873C-0BBC204B7641}</ProjectGuid>
     <ProjectName>Notepad2</ProjectName>
@@ -28,38 +27,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='10.0'">v100</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='12.0'">v120_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='14.0'">v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='10.0'">v100</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='12.0'">v120_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='14.0'">v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='10.0'">v100</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='12.0'">v120_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='14.0'">v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='10.0'">v100</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='12.0'">v120_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)'=='14.0'">v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
@@ -81,51 +68,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IntDir>..\bin\VS2012\$(Configuration)_x86\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x86\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x86\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x86\obj\</IntDir>
+    <IntDir>..\bin\VS2017\$(Configuration)_x86\obj\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\VS2012\$(Configuration)_x86\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x86\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x86\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x86\</OutDir>
+    <OutDir>..\bin\VS2017\$(Configuration)_x86\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IntDir>..\bin\VS2012\$(Configuration)_x86\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x86\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x86\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x86\obj\</IntDir>
+    <IntDir>..\bin\VS2017\$(Configuration)_x86\obj\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\VS2012\$(Configuration)_x86\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x86\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x86\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x86\</OutDir>
+    <OutDir>..\bin\VS2017\$(Configuration)_x86\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IntDir>..\bin\VS2012\$(Configuration)_x64\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x64\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x64\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x64\obj\</IntDir>
+    <IntDir>..\bin\VS2017\$(Configuration)_x64\obj\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\VS2012\$(Configuration)_x64\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x64\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x64\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x64\</OutDir>
+    <OutDir>..\bin\VS2017\$(Configuration)_x64\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IntDir>..\bin\VS2012\$(Configuration)_x64\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x64\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x64\obj\</IntDir>
-    <IntDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x64\obj\</IntDir>
+    <IntDir>..\bin\VS2017\$(Configuration)_x64\obj\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\VS2012\$(Configuration)_x64\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='10.0'">..\bin\VS2010\$(Configuration)_x64\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='12.0'">..\bin\VS2013\$(Configuration)_x64\</OutDir>
-    <OutDir Condition="'$(VisualStudioVersion)'=='14.0'">..\bin\VS2015\$(Configuration)_x64\</OutDir>
+    <OutDir>..\bin\VS2017\$(Configuration)_x64\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -140,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -166,7 +129,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
@@ -182,7 +145,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\scintilla\include;..\scintilla\lexlib;..\scintilla\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableEnhancedInstructionSet Condition="'$(VisualStudioVersion)'&gt;'10.0'">NoExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>WIN32;STATIC_BUILD;SCI_LEXER;BOOKMARK_EDITION;NDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -190,7 +153,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <MergeSections>.rdata=.text</MergeSections>
@@ -217,7 +180,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comctl32.lib;imm32.lib;shlwapi.lib;msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <MergeSections>.rdata=.text</MergeSections>
