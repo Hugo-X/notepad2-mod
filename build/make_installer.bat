@@ -26,7 +26,7 @@ IF /I "%~1" == "/?"     GOTO SHOWHELP
 
 rem You can set here the Inno Setup path if for example you have Inno Setup Unicode
 rem installed and you want to use the ANSI Inno Setup which is in another location
-IF NOT DEFINED InnoSetupPath SET "InnoSetupPath=H:\progs\thirdparty\isetup"
+IF NOT DEFINED InnoSetupPath SET "InnoSetupPath=InnoSetup5"
 
 rem Check the building environment
 CALL :SubDetectInnoSetup
